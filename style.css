@@ -1,3 +1,9 @@
+/* 변수선언 */
+:root{
+    --primaryColor:green;
+    --errorColor:orange;
+}
+
 html{
     box-sizing: border-box;
 }
@@ -26,4 +32,69 @@ body{
 h2{
     text-align: center;
     margin-top: 20px;
+}
+
+.inputGroup{
+    padding: 8px 12px;
+    /* 패딩 위아래로 8, 양옆으로 12 */
+}
+
+.inputGroup label{
+    display: block;
+    padding: 12px 0;
+}
+
+.inputGroup input{
+    display: block;
+    width: 93%;
+    padding: 12px;
+    border: 2px solid #2e2e2e;
+    font-size: 16px;
+}
+
+/* 입력창 선택했을 때 색 */
+.inputGroup input:focus{
+    outline: none;
+    /* 테두리를 안보이게 함 */
+    border-color: #777;
+    /* 테두리색 */
+}
+
+.inputGroup.valid input{
+    border-color:var(--primaryColor);
+    /* 테두리 색깔이 초록색 */
+    /* .valid는 자바스크립트로 가상의 css 선택자를 설정함 */
+    /* var(--primaryColor) => green 과 같다고 봄*/
+}
+.inputGroup.invalid input{
+    border-color:var(--errorColor);
+    visibility: visible;
+}
+
+.inputGroup .helperText{
+    display: block;
+    padding-top: 8px;
+}
+
+/* 잘보이면 알림 안뜨게 */
+.inputGroup.valid .helperText{
+    visibility: hidden;
+}
+
+.inputGroup.invalid .helperText{
+    color:var(--errorColor);
+}
+
+#wrapper button{
+    display: block;
+    width: 93%;
+    margin: 0 auto;
+    height: 50px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    background-color: var(--primaryColor);
+    border: 2px solid var(--primaryColor);
+    color: white;
+    /* 텍스트 색깔 */
+    cursor: pointer;
 }
