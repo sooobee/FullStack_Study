@@ -1,0 +1,29 @@
+html{
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    /*수직중앙정렬*/
+    justify-content: center;
+    /*수평중앙정렬*/
+    min-height: 100vh;
+    /*뷰포트의 높이를 100%를 최소높이로 지정*/
+    background-color: white;
+}
+
+#wrapper{
+    width: 420px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,2);
+    /*box-shadow는 영역에 그림자를 설정*/
+    /*0px은 수평방향의 그림자를 생성*/
+    /*4px은 수직방향의 그림자를 생성*/
+    /*14px은 그림자의 블러값(흐림도)를 적용*/
+    /*rgba는 그림자 색깔*/
+}
+
+h2{
+    text-align: center;
+    margin-top: 20px;
+}
