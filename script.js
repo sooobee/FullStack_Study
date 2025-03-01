@@ -11,15 +11,17 @@ const registrationForm = document.getElementById("registrationForm");
 
 const updateHelperText = (input, message, isValid)=>{
     const inputGroup = input.parentElement;
+
     // input 태그의 부모 태그에 접근
     const helperText = inputGroup.getElementsByClassName("helperText")[0];
-    // 알림 안뜨게
+    
+    // 유효한 경우 알림 안뜨게
     if(isValid == true){
         inputGroup.classList.remove("invalid");
         inputGroup.classList.add("valid");
         helperText.style.visibility = "hidden";
     }
-    // 알림보이게
+    // 유효하지 않은 경우 알림보이게
     if(isValid == false){
         inputGroup.classList.remove("valid");
         inputGroup.classList.add("invalid");
@@ -28,6 +30,29 @@ const updateHelperText = (input, message, isValid)=>{
     }
 };
 
+// 입력 필드가 비어있는지 확인하는 함수
+const checkEmptyInput = (input) => {
+    if(input.value.trim() === ''){
+        //인풋 입력칸에 입력한 문자열 중 띄어쓰기를 없애는 기능
+        updateHelperText(input,'값을 입력해주세요.',false);
 
+        return false;
+    }
+    else {
+        //입력이 있으면 도움말을 지움
+        updateHelperText(input, "", true);
+    }
+}
 
+// 이메일 형식이 올바른지 확인하는 함수
+// 이메일 주소가 규칙에 맞게 작성되었는지 확인
+const validateEmailFormat = (input) =>{
+    const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    if(emailPattern.test(input.value.trim()) == true){
+        updateHelperText(input, "", true);
+        return true;
+    } else {
+        updateHelperText(input, "유효한 이메일 주소를 입력하세요.", false);
+    }
+}
 
