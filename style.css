@@ -48,7 +48,7 @@ h2{
     display: block;
     width: 93%;
     padding: 12px;
-    border: 2px solid #2e2e2e;
+    border: 2px solid #bebcbc;
     font-size: 16px;
 }
 
@@ -60,12 +60,15 @@ h2{
     /* 테두리색 */
 }
 
+/* inputGroup 내에 valid한 것은 초록색으로 표시 */
 .inputGroup.valid input{
     border-color:var(--primaryColor);
     /* 테두리 색깔이 초록색 */
     /* .valid는 자바스크립트로 가상의 css 선택자를 설정함 */
     /* var(--primaryColor) => green 과 같다고 봄*/
 }
+
+/* inputGroup 내에 invalid한 것은 주황색으로 표시 */
 .inputGroup.invalid input{
     border-color:var(--errorColor);
     visibility: visible;
@@ -76,7 +79,7 @@ h2{
     padding-top: 8px;
 }
 
-/* 잘보이면 알림 안뜨게 */
+/* 유효성검사 통과하면 알림 안보이게 */
 .inputGroup.valid .helperText{
     visibility: hidden;
 }
