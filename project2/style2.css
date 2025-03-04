@@ -1,0 +1,76 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #2c3e50;
+    background-color: beige;
+    animation: fadein 1.5s;
+}
+
+/* 에니메이션 설정 */
+@keyframes fadein{
+    from{
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
+
+.container{
+    display: block;
+    text-align: center;
+}
+
+h1{
+    margin-bottom: 0;
+    font-size: 300%;
+    color:#34495e;
+}
+
+input{
+    /* 입력방향: 왼쪽 -> 오른쪽 */
+    direction: ltr;
+    background-color: #ffffff;
+    width: 80vw;
+    font-size: 3rem;
+    color:#2c3e50;
+    border: 2px solid #bdc3c7;
+    border-radius: 0.5rem;
+}
+
+table{
+    /* 가운데에 오게 */
+    margin: 0 auto;
+}
+
+button{
+    /* border:none; */
+    border-color: white;
+    background-color: #ecf0f1;
+    width: 20vw;
+    height: 10vw;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    color: #2c3e50;
+    transition: box-shadow 0.3s ease transform 0.2s ease;
+}
+
+/* 버튼을 눌렀을 때 효과*/
+button:active{
+    transform: scale(0.95);
+    box-shadow: 3px 2px 22px 1px rgba(0,0,0,0,15);
+}
+
+/* 버튼에 커서 올렸을 때 효과 */
+button:hover{
+    transform: scale(0.95);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
