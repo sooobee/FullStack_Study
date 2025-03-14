@@ -1,0 +1,45 @@
+14-Mar-2025 16:15:54.764 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전 이름:    Apache Tomcat/9.0.102
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:  Mar 3 2025 19:33:14 UTC
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:  9.0.102.0
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 이름:     Mac OS X
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:     15.3.1
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 아키텍처:          aarch64
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 자바 홈:           /Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 버전:          20+36-2344
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 벤더:          Oracle Corporation
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     /Users/subi/Desktop/apache-tomcat-9.0.102
+14-Mar-2025 16:15:54.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     /Users/subi/Desktop/apache-tomcat-9.0.102
+14-Mar-2025 16:15:54.814 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.io=ALL-UNNAMED
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util=ALL-UNNAMED
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.config.file=/Users/subi/Desktop/apache-tomcat-9.0.102/conf/logging.properties
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djdk.tls.ephemeralDHKeySize=2048
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dsun.io.useCanonCaches=false
+14-Mar-2025 16:15:54.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+14-Mar-2025 16:15:54.816 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dignore.endorsed.dirs=
+14-Mar-2025 16:15:54.816 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.base=/Users/subi/Desktop/apache-tomcat-9.0.102
+14-Mar-2025 16:15:54.816 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.home=/Users/subi/Desktop/apache-tomcat-9.0.102
+14-Mar-2025 16:15:54.816 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.io.tmpdir=/Users/subi/Desktop/apache-tomcat-9.0.102/temp
+14-Mar-2025 16:15:54.826 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 프로덕션 환경들에서 최적의 성능을 제공하는, APR 기반 Apache Tomcat Native 라이브러리가, 다음 java.library.path에서 발견되지 않습니다: [/Users/subi/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+14-Mar-2025 16:15:55.073 INFO [main] org.apache.coyote.AbstractProtocol.init 프로토콜 핸들러 ["http-nio-8080"]을(를) 초기화합니다.
+14-Mar-2025 16:15:55.116 INFO [main] org.apache.catalina.startup.Catalina.load [493] 밀리초 내에 서버가 초기화되었습니다.
+14-Mar-2025 16:15:55.139 INFO [main] org.apache.catalina.core.StandardService.startInternal 서비스 [Catalina]을(를) 시작합니다.
+14-Mar-2025 16:15:55.139 INFO [main] org.apache.catalina.core.StandardEngine.startInternal 서버 엔진을 시작합니다: [Apache Tomcat/9.0.102]
+14-Mar-2025 16:15:55.143 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/docs]을(를) 배치합니다.
+14-Mar-2025 16:15:55.307 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/docs]에 대한 배치가 [162] 밀리초에 완료되었습니다.
+14-Mar-2025 16:15:55.308 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/manager]을(를) 배치합니다.
+14-Mar-2025 16:15:55.329 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/manager]에 대한 배치가 [21] 밀리초에 완료되었습니다.
+14-Mar-2025 16:15:55.329 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/examples]을(를) 배치합니다.
+14-Mar-2025 16:15:55.471 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/examples]에 대한 배치가 [142] 밀리초에 완료되었습니다.
+14-Mar-2025 16:15:55.471 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/ROOT]을(를) 배치합니다.
+14-Mar-2025 16:15:55.481 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/ROOT]에 대한 배치가 [10] 밀리초에 완료되었습니다.
+14-Mar-2025 16:15:55.481 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/host-manager]을(를) 배치합니다.
+14-Mar-2025 16:15:55.492 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [/Users/subi/Desktop/apache-tomcat-9.0.102/webapps/host-manager]에 대한 배치가 [11] 밀리초에 완료되었습니다.
+14-Mar-2025 16:15:55.495 INFO [main] org.apache.coyote.AbstractProtocol.start 프로토콜 핸들러 ["http-nio-8080"]을(를) 시작합니다.
+14-Mar-2025 16:15:55.502 INFO [main] org.apache.catalina.startup.Catalina.start 서버가 [385] 밀리초 내에 시작되었습니다.
