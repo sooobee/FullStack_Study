@@ -14,13 +14,14 @@
 
 	<c:set var="name" value="bii"/>
 	<c:set var="age" value="20"/>
+	<c:set var="kiikii" value="${['하음','키야','수이']}"/>
 	
 	<c:out value="${name} 은/는 "/>
 	
 	<c:if test="${age>=20}">
 		<p>${name}은/는 성인 입니다.</p>
 	</c:if>
-	
+	 
 	<c:choose>
 		<c:when test="${age>20}">
 			21살 이상 입니다.
@@ -35,6 +36,11 @@
 		</c:otherwise>
 	</c:choose>
 	
+	<ul>
+		<c:forEach var="girl" items="${kiikii}">
+			<li>${girl}</li>
+		</c:forEach>
+	</ul>
 	
 </body>
 </html>
