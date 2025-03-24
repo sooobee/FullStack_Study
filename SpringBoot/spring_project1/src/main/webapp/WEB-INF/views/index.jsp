@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카네스 블랙 카페 </title>
+<title>카네스 블랙 카페</title>
 </head>
 <body>
 
@@ -19,6 +19,7 @@
 			</div>
 		</div>
 	</div>
+	
 <!--푸터의 내용이 다 들어감-->	
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
