@@ -17,7 +17,7 @@
 				<div class="input-group">
 					<label for="username">아이디</label>
 					<input type="text" id="username" name="username" required/>
-				</div>
+				</div> 
 				<div class="input-group">
 					<label for="password">비밀번호</label>
 					<input type="text" id="password" name="passw	ord" required/>

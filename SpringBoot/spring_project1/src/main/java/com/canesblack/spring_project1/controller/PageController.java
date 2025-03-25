@@ -12,16 +12,14 @@ public class PageController {
 	}
 	
 	// 로그인 페이지
-		@GetMapping("/loginPage")
-		public String loginPage() {
-			return "login/index";
-		}
+	@GetMapping("/loginPage")
+	public String loginPage() {
+		return "login/index";
+	}
 	
 	// 회원가입 화면
 	@GetMapping("/register")
 	public String registerPage() {
 		return "register/index";
-	}
-	
-	
+	}	
 }
