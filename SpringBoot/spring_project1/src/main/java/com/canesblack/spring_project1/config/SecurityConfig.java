@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 
 import jakarta.servlet.ServletException;
@@ -25,41 +26,57 @@ import jakarta.servlet.http.HttpSession;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
+	// 보안 필터 설정
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-		// 스프링 시큐리티 기능을 사용하고자 할 때 이 메소드 안에 작성
-		
-		//csrf 해킹 보호조치 코드 
+		//csrf 방지설정
 		http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+		// CORS 설정(특정 서버에서만 데이터를 주고 받음)
 		.cors(cors -> cors.configurationSource(corsCorsfigurationSource()))
-		// cors 는 특정서버로만 데이터를 넘길 수 있도록 설정할 수 있음
+		// 세션 필요할 때만 생
 		.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+		// 접근 권한 설정
+		// /, LoginPage, logout, register = 모든 사용자에게 허용
 		.authorizeHttpRequests(authz->authz.requestMatchers("/", "/loginPage","/logout", "/noticeCheckPage", "/register", "/menu/all")
 		.permitAll()
+		// login은 post요청으로 데이터 전송할 때 사용, 모든 사용자 허용 
 		.requestMatchers(HttpMethod.POST,"/login").permitAll()
-		.requestMatchers("/resource/**","/WEB-INF/**").permitAll()
+		.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
+		// noticeAdd, noticeModifyPage는 admin, manager 일 때만 접근 가능
 		.requestMatchers("/noticeAdd","noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
+		//위에 적힌 거 외에는 로그인한 사용자만 접근가능 
 		.anyRequest().authenticated()
 		)
 		
-		
+		// 로그인 설정
 		.formLogin(
 				// 로그인 페이지로 이동할 때
 				login->login.loginPage("/loginPage")
-				// login으로 username, password 보낼 때
+				// login 요청 처리
 				.loginProcessingUrl("/login")
-				// 실패했을 때
+				// 로그인 실패했을 때
 				.failureUrl("/loginPage?error=true")
+				// 사용자 이름, 비밀번호 파라미터 
 				.usernameParameter("username")
 				.passwordParameter("password")
+				// 로그인 성공 시 실행할 핸들러 
 				.successHandler(authenticationSuccessHandler())
 				.permitAll()
-				);
+				)
+		// 로그아웃 설정 
+		.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			// 로그아웃 성공시 이 url(/)로 리다이렉팅
+			.logoutSuccessUrl("/") 
+			// 자동 로그아웃 방지 기능 해제(세션 무효화, 쿠키 삭제)
+			.invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID")
+			.permitAll()
+			);
 		
 		return http.build();
 	}
 	
+	// 로그인 성공 시 수행하는 핸들러
 	@Bean
 	public AuthenticationSuccessHandler authenticationSuccessHandler() {
 		return new SimpleUrlAuthenticationSuccessHandler() {
@@ -67,36 +84,48 @@ public class SecurityConfig {
 			@Override
 			public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 					Authentication authentication) throws IOException, ServletException {
-				// 로그인 성공했을 때 세션, 권한 기능 추가 가능
-				HttpSession session = request.getSession(); // 세션기능가져옴(로그아웃 할 때까지 로그인 상태 유지)
-				boolean isManager = authentication.getAuthorities().stream()
-						.anyMatch(grantedAuthoirity ->
-						grantedAuthoirity.getAuthority().equals("ADMIN") ||
-						grantedAuthoirity.getAuthority().equals("MANAGER"));
-				
-				// 운영진일 때 세션에 메니저추가
-				if(isManager) {
-					session.setAttribute("Manager", true);
-				}
-				
-				session.setAttribute("username", authentication.getName());
-				session.setAttribute("isAuthenticatied", true);
-				response.sendRedirect(request.getContextPath()+"/");
-				
-				super.onAuthenticationSuccess(request, response, authentication);
-				
+					
+					// 세션 유지(로그인 유지)
+					HttpSession session = request.getSession(); 
+					
+					boolean isManager = authentication.getAuthorities().stream()
+							.anyMatch(grantedAuthoirity ->
+							grantedAuthoirity.getAuthority().equals("ADMIN") ||
+							grantedAuthoirity.getAuthority().equals("MANAGER"));
+					
+					// 운영진일 때 세션에 매니저 표시 
+					if(isManager) {
+						session.setAttribute("Manager", true);
+					}
+					
+					// 유저이름 저장 
+					session.setAttribute("username", authentication.getName());
+					session.setAttribute("isAuthenticatied", true);
+					
+					// 로그인 성공 후 / 로 리다이렉트
+					response.sendRedirect(request.getContextPath()+"/");
+					
+					super.onAuthenticationSuccess(request, response, authentication);
 			}
 		};
 		
 	}
 	
+	// CORS 설정 
 	@Bean
 	public org.springframework.web.cors.CorsConfigurationSource corsCorsfigurationSource() {
+		
 		CorsConfiguration configuration = new CorsConfiguration();
+		
+		// 허용할 URL
 		configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://localhost:8080"));
+		// 허용할 HTTP 메서드 
 		configuration.setAllowedMethods(Arrays.asList("Get", "POST", "PUT", "DELETE"));
+		// 허용할 HTTP 헤더
 		configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+		
 		org.springframework.web.cors.UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
+		// 모든 경로에 대해 CORS 설정 
 		source.registerCorsConfiguration("/**", configuration);
 		
 		return source;
