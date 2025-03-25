@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/footer.css">
 </head>
 <body>
 <div id="footer">
-	<p style="color:while; text-align:center;">2024 Canesblack Cafe. All rights reserved.</p>
+	<p style="color:while; text-align:center;">2024 Canesblack Cafe. All rights reserved</p>
 </div>
 </body>
 </html>
