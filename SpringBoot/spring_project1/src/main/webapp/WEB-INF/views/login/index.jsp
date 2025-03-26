@@ -14,8 +14,8 @@
 		<div id="login-container">
 			<h2>로그인</h2>
 			
-			<!-- localhost:8080으로 username, password 넘어감 -->
-			<form action="${pageContext.request.contextPath}/login"method="post">
+			<!-- localhost:8080/login으로 username, password 넘어감 -->
+			<form action="${pageContext.request.contextPath}/login" method="post">
 				<div class="input-group">
 					<label for="username">아이디</label>
 					<input type="text" id="username" name="username" required/>
