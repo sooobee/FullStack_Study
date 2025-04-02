@@ -1,21 +1,21 @@
 package com.canesblack.spring_project1.entity;
-
+// 현업에서는 @Rombok 사용 
 // MVC의 Model 영역에 해당
 public class User {
 	private int idx;
 	private String username;
 	private String password;
-	private String wirter;
+	private String writer;
 	private Role role;
 	
 	public User() {}
 	
 	// 생성자
-	public User(int idx, String username, String password, String wirter, Role role) {
+ User(int idx, String username, String password, String writer, Role role) {
 		this.idx = idx;
 		this.username = username;
 		this.password = password;
-		this.wirter = wirter;
+		this.writer = writer;
 		this.role = role;
 	}
 
@@ -43,12 +43,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getWirter() {
-		return wirter;
+	public String getWriter() {
+		return writer;
 	}
 
-	public void setWirter(String wirter) {
-		this.wirter = wirter;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 	public Role getRole() {
