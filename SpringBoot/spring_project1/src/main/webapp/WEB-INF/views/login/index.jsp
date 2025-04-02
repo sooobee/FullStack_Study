@@ -29,7 +29,7 @@
 			
 			<div id="register-link">
 				<!-- lcalhost:8080/register까지 이동 -->
-				<a href="${pageContext.request.contextPath}/register">회원가입</a>	
+				<a href="${pageContext.request.contextPath}/registerPage">회원가입</a>	
 			</div>
 		</div>
 	</div>

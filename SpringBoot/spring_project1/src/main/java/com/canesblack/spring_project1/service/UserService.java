@@ -19,6 +19,4 @@ public class UserService {
 	public String findWriter(String username) {
 		return userMapper.findWriter(username);
 	}
-	
-	
 }
