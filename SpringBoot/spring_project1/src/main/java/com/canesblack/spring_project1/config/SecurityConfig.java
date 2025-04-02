@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -37,10 +39,10 @@ public class SecurityConfig {
 		.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
 		// 접근 권한 설정
 		// /, LoginPage, logout, register = 모든 사용자에게 허용
-		.authorizeHttpRequests(authz->authz.requestMatchers("/", "/loginPage","/logout", "/noticeCheckPage", "/register", "/menu/all")
+		.authorizeHttpRequests(authz->authz.requestMatchers("/", "/loginPage","/logout", "/noticeCheckPage", "/registerPage", "/menu/all")
 		.permitAll()
 		// login은 post요청으로 데이터 전송할 때 사용, 모든 사용자 허용 
-		.requestMatchers(HttpMethod.POST,"/login").permitAll()
+		.requestMatchers(HttpMethod.POST,"/login", "/register").permitAll()
 		.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
 		// noticeAdd, noticeModifyPage는 admin, manager 일 때만 접근 가능
 		.requestMatchers("/noticeAdd","noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
@@ -109,6 +111,11 @@ public class SecurityConfig {
 			}
 		};
 		
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder(); // 비밀번 암호화
 	}
 	
 	// CORS 설정 
