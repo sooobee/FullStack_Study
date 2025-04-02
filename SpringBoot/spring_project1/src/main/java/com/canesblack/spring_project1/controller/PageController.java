@@ -1,7 +1,14 @@
 package com.canesblack.spring_project1.controller;
 
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import com.canesblack.spring_project1.entity.User;
+
+import ch.qos.logback.core.model.Model;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class PageController {
@@ -16,10 +23,16 @@ public class PageController {
 	public String loginPage() {
 		return "login/index";
 	}
-	
+	 
 	// 회원가입 화면
-	@GetMapping("/register")
-	public String registerPage() {
+	// Controller -> View 단으로 request 보냄
+	@GetMapping("/registerPage")
+	public String registerPage(HttpServletRequest request,org.springframework.ui.Model model) {
+		
+		// csrf 처리를 해줘야 정보가 넘어감
+		CsrfToken csrfToken = (CsrfToken)request.getAttribute(CsrfToken.class.getName());
+		
+		model.addAttribute("_csrf", csrfToken);
 		return "register/index";
 	}	
 }
