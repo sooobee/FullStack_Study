@@ -32,7 +32,8 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 		//csrf 방지설정
-		http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+		http
+		.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
 		// CORS 설정(특정 서버에서만 데이터를 주고 받음)
 		.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 		// 세션 필요할 때만 생
@@ -103,14 +104,11 @@ public class SecurityConfig {
 					
 					// 유저이름 저장 
 					session.setAttribute("username", authentication.getName());
-					session.setAttribute("isAuthenticatied", true);
+					session.setAttribute("isAuthenticated", true);
 					
 					// 로그인 성공 후 / 로 리다이렉트
 					response.sendRedirect(request.getContextPath() + "/");
 					super.onAuthenticationSuccess(request, response, authentication);
-					
-					
-					
 			}
 		};
 		
