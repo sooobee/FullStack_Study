@@ -34,7 +34,7 @@ public class SecurityConfig {
 		//csrf 방지설정
 		http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
 		// CORS 설정(특정 서버에서만 데이터를 주고 받음)
-		.cors(cors -> cors.configurationSource(corsCorsfigurationSource()))
+		.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 		// 세션 필요할 때만 생
 		.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
 		// 접근 권한 설정
@@ -45,7 +45,10 @@ public class SecurityConfig {
 		.requestMatchers(HttpMethod.POST,"/login", "/register").permitAll()
 		.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
 		// noticeAdd, noticeModifyPage는 admin, manager 일 때만 접근 가능
-		.requestMatchers("/noticeAdd","noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
+		.requestMatchers("/noticeAdd","/noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
+		.requestMatchers(HttpMethod.POST,"/menu/add").hasAnyAuthority("ADMIN","MANAGER")
+		.requestMatchers(HttpMethod.POST,"/menu/update").hasAnyAuthority("ADMIN","MANAGER")
+		.requestMatchers(HttpMethod.DELETE,"/menu/delete").hasAnyAuthority("ADMIN","MANAGER")
 		//위에 적힌 거 외에는 로그인한 사용자만 접근가능 
 		.anyRequest().authenticated()
 		)
@@ -60,22 +63,20 @@ public class SecurityConfig {
 				.failureUrl("/loginPage?error=true")
 				// 사용자 이름, 비밀번호 파라미터 
 				.usernameParameter("username")
-				.passwordParameter("password")
+				.passwordParameter("password")  
 				// 로그인 성공 시 실행할 핸들러 
 				.successHandler(authenticationSuccessHandler())
 				.permitAll()
 				)
 		// 로그아웃 설정 
 		.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			// 로그아웃 성공시 이 url(/)로 리다이렉팅
-			.logoutSuccessUrl("/") 
-			// 자동 로그아웃 방지 기능 해제(세션 무효화, 쿠키 삭제)
-			.invalidateHttpSession(true)
-			.deleteCookies("JSESSIONID")
+			.logoutSuccessUrl("/") // 로그아웃 성공시 이 url(/)로 리다이렉팅
+			.invalidateHttpSession(true) // 자동 로그아웃 방지 기능 해제(세션 무효화, 쿠키 삭제)
+			.deleteCookies("JSESSIONID") // 쿠키 삭제
 			.permitAll()
 			);
 		
-		return http.build();
+		return http.build(); // 최종 Http 메서드 적용 
 	}
 	
 	// 로그인 성공 시 수행하는 핸들러
@@ -91,9 +92,9 @@ public class SecurityConfig {
 					HttpSession session = request.getSession(); 
 					
 					boolean isManager = authentication.getAuthorities().stream()
-							.anyMatch(grantedAuthoirity ->
-							grantedAuthoirity.getAuthority().equals("ADMIN") ||
-							grantedAuthoirity.getAuthority().equals("MANAGER"));
+							.anyMatch(grantedAuthority ->
+							grantedAuthority.getAuthority().equals("ADMIN") ||
+							grantedAuthority.getAuthority().equals("MANAGER"));
 					
 					// 운영진일 때 세션에 매니저 표시 
 					if(isManager) {
@@ -105,9 +106,11 @@ public class SecurityConfig {
 					session.setAttribute("isAuthenticatied", true);
 					
 					// 로그인 성공 후 / 로 리다이렉트
-					response.sendRedirect(request.getContextPath()+"/");
-					
+					response.sendRedirect(request.getContextPath() + "/");
 					super.onAuthenticationSuccess(request, response, authentication);
+					
+					
+					
 			}
 		};
 		
@@ -115,17 +118,17 @@ public class SecurityConfig {
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(); // 비밀번 암호화
+		return new BCryptPasswordEncoder(); // 비밀번호 암호화
 	}
 	
 	// CORS 설정 
 	@Bean
-	public org.springframework.web.cors.CorsConfigurationSource corsCorsfigurationSource() {
+	public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
 		
 		CorsConfiguration configuration = new CorsConfiguration();
 		
 		// 허용할 URL
-		configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://localhost:8080"));
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080"));
 		// 허용할 HTTP 메서드 
 		configuration.setAllowedMethods(Arrays.asList("Get", "POST", "PUT", "DELETE"));
 		// 허용할 HTTP 헤더

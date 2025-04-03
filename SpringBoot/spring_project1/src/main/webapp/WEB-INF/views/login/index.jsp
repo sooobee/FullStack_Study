@@ -16,6 +16,10 @@
 			
 			<!-- localhost:8080/login으로 username, password 넘어감 -->
 			<form action="${pageContext.request.contextPath}/login" method="post">
+			
+			<!-- CSRF 토큰 추가 -->
+			<input type="hidden" name="_csrf" value="${_csrf.token}">
+			
 				<div class="input-group">
 					<label for="username">아이디</label>
 					<input type="text" id="username" name="username" required/>
