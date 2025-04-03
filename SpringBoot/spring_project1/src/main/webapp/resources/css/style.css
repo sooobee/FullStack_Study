@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+#menuAdmin button{
+	padding: 10px 20px;
+	border: none;
+	color: white;
+	background-color: #333;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: point;
+}
+
+#menuAdmin button:hover{
+	background-color: #555;
+}
