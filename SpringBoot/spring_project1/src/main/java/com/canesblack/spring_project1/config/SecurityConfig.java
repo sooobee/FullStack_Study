@@ -98,7 +98,7 @@ public class SecurityConfig {
 					
 					// 운영진일 때 세션에 매니저 표시 
 					if(isManager) {
-						session.setAttribute("Manager", true);
+						session.setAttribute("MANAGER", true);
 					}
 					
 					// 유저이름 저장 
