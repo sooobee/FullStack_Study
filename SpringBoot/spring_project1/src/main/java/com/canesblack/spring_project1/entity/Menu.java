@@ -7,13 +7,13 @@ public class Menu {
 	private String content;
 	private String writer;
 	private String indate;
-	private String count;
+	private	int count;
 	
 	public Menu() {
 		
 	}
 
-	public Menu(int idx, String memID, String title, String content, String writer, String indate, String count) {
+	public Menu(int idx, String memID, String title, String content, String writer, String indate, int count) {
 		this.idx = idx;
 		this.memID = memID;
 		this.title = title;
@@ -71,12 +71,12 @@ public class Menu {
 		this.indate = indate;
 	}
 
-	public String getCount() {
+	public int getCount() {
 		return count;
 	}
 
-	public void setCount(String count) {
-		this.count = count;
+	public void setCount(int i) {
+		this.count = i;
 	}
 	
 }
