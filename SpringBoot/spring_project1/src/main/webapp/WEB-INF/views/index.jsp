@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="-csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 <title>카네스 블랙 카페</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
@@ -28,5 +30,7 @@
 	
 <!--푸터의 내용이 다 들어감-->	
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+
 </body>
 </html>
