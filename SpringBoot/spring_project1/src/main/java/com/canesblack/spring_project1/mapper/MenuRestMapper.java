@@ -23,7 +23,7 @@ public interface MenuRestMapper {
 	
 	// 특정 게시글의 내용을 가져오는 메서드
 	@Select("SELECT idx, memID, title, content, writer, indate, count "
-			+ "FROM backend_spring_rpject.menu WHERE idx= #{idx}")
+			+ "FROM backend_spring_project.menu WHERE idx= #{idx}")
 	public Menu boardContent(int idx);
 	
 	// 특정 게시글을 삭제하는 메서드

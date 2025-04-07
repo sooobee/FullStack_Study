@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.canesblack.spring_project1.entity.Menu;
 import com.canesblack.spring_project1.entity.User;
+import com.canesblack.spring_project1.service.MenuRestService;
 import com.canesblack.spring_project1.service.UserService;
 
 
@@ -17,6 +20,9 @@ import jakarta.servlet.http.HttpServletRequest;
 // 
 @Controller
 public class PageController {
+	
+	@Autowired
+	private MenuRestService menuRestService;
 	
 	@Autowired
 	private UserService userService;
@@ -57,5 +63,15 @@ public class PageController {
 		 model.addAttribute("writer", writer);
 		 
 		 return "noticeAdd/index";
+	 }
+	 
+	 @GetMapping("/noticeCheckPage")
+	 // idx에 idx값을 넣어 붙힘 
+	 public String showNoticeCheckPage(@RequestParam("idx") int idx, Model model) {
+		 // 해당 idx의 게시물을 가져옴
+		 Menu menu = menuRestService.boardContent(idx);
+		 model.addAttribute("menu", menu);
+		 
+		 return "noticeCheck/index"; 
 	 }
 }

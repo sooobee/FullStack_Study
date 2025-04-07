@@ -97,7 +97,7 @@ public class SecurityConfig {
 							grantedAuthority.getAuthority().equals("ADMIN") ||
 							grantedAuthority.getAuthority().equals("MANAGER"));
 					
-					// 운영진일 때 세션에 매니저 표시 
+					// 운영진일 때 세션에 매니저 저장
 					if(isManager) {
 						session.setAttribute("MANAGER", true);
 					}
