@@ -23,13 +23,13 @@
 				<!-- 회원 아이디는 수정 불가능, 세션에서 가져옴  -->
 				<input type="text" id="memID" name="memID" placeholder="회원아이디" maxlength="20" value="${username}" readonly>
 				<br>
-				<label for="memID">제목</label>
+				<label for="title">제목</label>
 				<input type="text" id="title" name="title" placeholder="제목" maxlength="10">
 				<br>
-				<label for="memID">회원아이디</label>
+				<label for="content">내용</label>
 				<input type="text" id="content" name="content" placeholder="내용" maxlength="30">
 				<br>
-				<label for="memID">작성자</label>
+				<label for="writer">작성자</label>
 				<input type="text" id="writer" name="writer" placeholder="작성자" maxlength="10" value="${writer}" readonly>
 				<br>
 				
