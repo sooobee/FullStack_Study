@@ -10,6 +10,7 @@ import com.canesblack.spring_project1.entity.Role;
 import com.canesblack.spring_project1.entity.User;
 import com.canesblack.spring_project1.service.UserService;
 
+// 회원가입 시 사용하는 controller
 @Controller
 public class UserController {
 	
@@ -25,14 +26,11 @@ public class UserController {
 	public String register(@ModelAttribute User user) {
 		
 		String userPassword = user.getPassword();
-		System.out.println("!!!!!!!!!!userPassword: "+userPassword);
-		
 		user.setRole(Role.MEMBER); // 멤버로 지정 
 		
 		String passwordEncoded = passwordEncoder.encode(userPassword); // 암호화
 		
 		user.setPassword(passwordEncoded); // 암호화된 패스워드 담김 
-		
 		userService.insertUser(user); // 유저 정보를 데이터베이스에 저장 
 		
 		// 다시 로그인 화면으로 리다이렉팅

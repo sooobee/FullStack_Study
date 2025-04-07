@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="-csrf" content="${_csrf.token}">
+<meta name="_csrf" content="${_csrf.token}">
 <meta name="_csrf_header" content="${_csrf.headerName}">
 <title>카네스 블랙 카페</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
@@ -24,6 +24,7 @@
 				<button type="button" onclick="location.href='${pageContext.request.contextPath}/noticeAddPage'">작성</button>
 			</c:if>
 			<div id="menuList">
+			
 			</div>
 		</div>
 	</div>

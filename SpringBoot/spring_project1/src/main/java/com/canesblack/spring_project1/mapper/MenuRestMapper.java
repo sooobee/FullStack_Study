@@ -12,7 +12,7 @@ import com.canesblack.spring_project1.entity.Menu;
 @Mapper
 public interface MenuRestMapper {
 	// 게시글 목록 가져오는 메서드
-	@Select("SELECT idx, memID, title, content, write, indate, count "
+	@Select("SELECT idx, memID, title, content, writer, indate, count "
 			+ "FROM backend_spring_project.menu ORDER BY idx DESC")
 	public java.util.List<Menu>getLists();
 	
@@ -22,7 +22,7 @@ public interface MenuRestMapper {
 	public void boarderInsert(Menu menu);
 	
 	// 특정 게시글의 내용을 가져오는 메서드
-	@Select("SELECT idx, memID, title, content, write, indate, count "
+	@Select("SELECT idx, memID, title, content, writer, indate, count "
 			+ "FROM backend_spring_rpject.menu WHERE idx= #{idx}")
 	public Menu boardContent(int idx);
 	

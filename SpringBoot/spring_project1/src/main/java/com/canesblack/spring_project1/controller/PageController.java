@@ -1,17 +1,26 @@
 package com.canesblack.spring_project1.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.canesblack.spring_project1.entity.User;
+import com.canesblack.spring_project1.service.UserService;
 
-import ch.qos.logback.core.model.Model;
+
 import jakarta.servlet.http.HttpServletRequest;
 
+// 
 @Controller
 public class PageController {
+	
+	@Autowired
+	private UserService userService;
+	
 	// 페이지를 조회,이동할 때 getMapping 사용
 	@GetMapping("/")
 	public String home() {
@@ -26,6 +35,7 @@ public class PageController {
 		CsrfToken csrfToken = (CsrfToken)request.getAttribute(CsrfToken.class.getName());
 		
 		model.addAttribute("_csrf", csrfToken);
+		
 		return "login/index";
 	}
 	 
@@ -36,8 +46,16 @@ public class PageController {
 		
 		// csrf 처리를 해줘야 정보가 넘어감
 		CsrfToken csrfToken = (CsrfToken)request.getAttribute(CsrfToken.class.getName());
-		
 		model.addAttribute("_csrf", csrfToken);
+		
 		return "register/index";
-	}	
+	}
+	
+	 @GetMapping("/noticeAddPage")
+	 public String noticeAddPage(Model model, Authentication authentication) {
+		 String writer = userService.findWriter(authentication.getName());
+		 model.addAttribute("writer", writer);
+		 
+		 return "noticeAdd/index";
+	 }
 }
