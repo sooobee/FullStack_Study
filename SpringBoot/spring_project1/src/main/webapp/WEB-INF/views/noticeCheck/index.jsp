@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 조회</title>
 <meta name="_csrf" content="${_csrf.token}">
 <meta name="_csrf_header" content="${_csrf.headerName}">
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/noticeCheck/style.css">
+<title>공지사항 조회</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/noticeCheck/style.css">
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -20,22 +20,22 @@
 			<div id="menuAdmin">
 				<h2 id="menuAdminH2">공지사항 작성</h2>
 				<br>
+				<input type="hidden" id="idx" name="idx" placeholder="idx" maxlength="20" value="${menu.idx}" readonly>
 				<label for="memID">회원아이디</label>
-				<!-- 회원 아이디는 수정 불가능, 모에서 가져옴  -->
 				<input type="text" id="memID" name="memID" placeholder="회원아이디" maxlength="20" value="${menu.memID}" readonly>
 				<br>
 				<label for="title">제목</label>
-				<input type="text" id="title" name="title" placeholder="제목" maxlength="10" value="${menu.title}">
+				<input type="text" id="title" name="title" placeholder="제목" maxlength="10" value="${menu.title}" readonly>
 				<br>
 				<label for="content">내용</label>
-				<input type="text" id="content" name="content" placeholder="내용" maxlength="30" value="${menu.content}">
+				<input type="text" id="content" name="content" placeholder="내용" maxlength="30" value="${menu.content}" readonly>
 				<br>
 				<label for="writer">작성자</label>
 				<input type="text" id="writer" name="writer" placeholder="작성자" maxlength="10" value="${menu.writer}" readonly>
 				<br>
 				
 				<div id="buttonContainer">
-					<c:if test="${MANAGER==true}">
+					<c:if test="${MANAGER == true}">
 						<button type="button" id="buttonUpdate">수정</button>
 						<button type="button" id="buttonDelete">삭제</button>
 					</c:if>
