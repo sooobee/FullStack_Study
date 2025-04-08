@@ -31,7 +31,7 @@ public interface MenuRestMapper {
 	public void boardDelete(int idx);
 	
 	// 게시글 수정
-	@Update("UPDATE backend_spring_project.menu SET title=#{title}, content=#{content}, writer=#{writer}")
+	@Update("UPDATE backend_spring_project.menu SET title=#{title}, content=#{content}, writer=#{writer} WHERE idx=#{idx}")
 	public void boardUpdate(Menu menu);
 	
 	// 조회수 업데이트
