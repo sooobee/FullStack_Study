@@ -65,7 +65,7 @@ public class MenuRestController {
 	}
 	
 	// 4.게시글 삭제
-	@DeleteMapping("/menu/delte/{idx}")
+	@DeleteMapping("/menu/delete/{idx}")
 	public void deleteMenu(@PathVariable("idx") int idx) {
 		menuRestService.boardDelete(idx);
 	}
