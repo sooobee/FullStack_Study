@@ -19,6 +19,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 
+import jakarta.servlet.DispatcherType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -55,6 +56,8 @@ public class SecurityConfig {
 		//위에 적힌 거 외에는 로그인한 사용자만 접근가능 
 		.anyRequest().authenticated()
 		)
+		// AWS 설정
+		.authorizeHttpRequests(request->request.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll())
 		
 		// 로그인 설정
 		.formLogin(
