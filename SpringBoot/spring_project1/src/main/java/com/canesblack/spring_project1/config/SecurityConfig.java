@@ -44,6 +44,8 @@ public class SecurityConfig {
 		.permitAll()
 		// login은 post요청으로 데이터 전송할 때 사용, 모든 사용자 허용 
 		.requestMatchers(HttpMethod.POST,"/login", "/register").permitAll()
+		.requestMatchers(HttpMethod.PUT, "/menu/count/**").permitAll() // 비로그인 상태에서도 조회수 +1
+
 		.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
 		// noticeAdd, noticeModifyPage는 admin, manager 일 때만 접근 가능
 		.requestMatchers("/noticeAddPage","/noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
