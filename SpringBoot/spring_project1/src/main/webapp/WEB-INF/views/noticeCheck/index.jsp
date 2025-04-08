@@ -18,20 +18,20 @@
 	<form id="menuForm">
 		<div id="container">
 			<div id="menuAdmin">
-				<h2 id="menuAdminH2">공지사항 작성</h2>
+				<h2 id="menuAdminH2">공지사항 조회</h2>
 				<br>
-				<input type="hidden" id="idx" name="idx" placeholder="idx" maxlength="20" value="${menu.idx}" readonly>
+				<input type="hidden" id="idx" name="idx" placeholder="idx" maxlength="20" value="${menu.idx}" readonly style="background:#e0e0e0">
 				<label for="memID">회원아이디</label>
-				<input type="text" id="memID" name="memID" placeholder="회원아이디" maxlength="20" value="${menu.memID}" readonly>
+				<input type="text" id="memID" name="memID" placeholder="회원아이디" maxlength="20" value="${menu.memID}" readonly style="background:#e0e0e0">
 				<br>
 				<label for="title">제목</label>
-				<input type="text" id="title" name="title" placeholder="제목" maxlength="10" value="${menu.title}" readonly>
+				<input type="text" id="title" name="title" placeholder="제목" maxlength="10" value="${menu.title}" readonly style="background:#e0e0e0">
 				<br>
 				<label for="content">내용</label>
-				<input type="text" id="content" name="content" placeholder="내용" maxlength="30" value="${menu.content}" readonly>
+				<input type="text" id="content" name="content" placeholder="내용" maxlength="30" value="${menu.content}" readonly style="background:#e0e0e0">
 				<br>
 				<label for="writer">작성자</label>
-				<input type="text" id="writer" name="writer" placeholder="작성자" maxlength="10" value="${menu.writer}" readonly>
+				<input type="text" id="writer" name="writer" placeholder="작성자" maxlength="10" value="${menu.writer}" readonly style="background:#e0e0e0">
 				<br>
 				
 				<div id="buttonContainer">
