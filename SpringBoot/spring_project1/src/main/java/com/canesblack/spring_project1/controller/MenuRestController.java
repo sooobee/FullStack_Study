@@ -61,7 +61,7 @@ public class MenuRestController {
 	public void updateMenu(@RequestBody Menu menu, @PathVariable("idx") int idx){
 		
 		menu.setIdx(idx); // idx 세팅 -> 이 게시글에 접근
-		menuRestService.boardUpdate(menu); // 게시글 수
+		menuRestService.boardUpdate(menu); // 게시글 수정
 	}
 	
 	// 4.게시글 삭제
