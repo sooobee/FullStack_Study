@@ -131,7 +131,7 @@ public class SecurityConfig {
 		CorsConfiguration configuration = new CorsConfiguration();
 		
 		// 허용할 URL
-		configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080"));
+		configuration.setAllowedOrigins(Arrays.asList("http://54.180.83.211:8080"));
 		// 허용할 HTTP 메서드 
 		configuration.setAllowedMethods(Arrays.asList("Get", "POST", "PUT", "DELETE"));
 		// 허용할 HTTP 헤더
