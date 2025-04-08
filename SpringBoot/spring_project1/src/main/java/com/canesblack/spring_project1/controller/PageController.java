@@ -74,4 +74,14 @@ public class PageController {
 		 
 		 return "noticeCheck/index"; 
 	 }
+	 
+	 @GetMapping("/noticeModifyPage")
+	 // idx에 idx값을 넣어 붙힘 
+	 public String showNoticeModifyPage(@RequestParam("idx") int idx, Model model) {
+		 // 해당 idx의 게시물을 가져옴
+		 Menu menu = menuRestService.boardContent(idx);
+		 model.addAttribute("menu", menu);
+		 
+		 return "noticeModify/index"; 
+	 }
 }
