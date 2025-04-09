@@ -41,23 +41,24 @@ public class SecurityConfig {
 		.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
 		// 접근 권한 설정
 		// /, LoginPage, logout, register = 모든 사용자에게 허용
-		.authorizeHttpRequests(authz->authz.requestMatchers("/", "/loginPage","/logout", "/noticeCheckPage", "/registerPage", "/menu/all")
-		.permitAll()
-		// login은 post요청으로 데이터 전송할 때 사용, 모든 사용자 허용 
-		.requestMatchers(HttpMethod.POST,"/login", "/register").permitAll()
-		.requestMatchers(HttpMethod.PUT, "/menu/count/**").permitAll() // 비로그인 상태에서도 조회수 +1
-
-		.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
-		// noticeAdd, noticeModifyPage는 admin, manager 일 때만 접근 가능
-		.requestMatchers("/noticeAddPage","/noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
-		.requestMatchers(HttpMethod.POST,"/menu/add").hasAnyAuthority("ADMIN","MANAGER")
-		.requestMatchers(HttpMethod.POST,"/menu/update").hasAnyAuthority("ADMIN","MANAGER")
-		.requestMatchers(HttpMethod.DELETE,"/menu/delete").hasAnyAuthority("ADMIN","MANAGER")
-		//위에 적힌 거 외에는 로그인한 사용자만 접근가능 
-		.anyRequest().authenticated()
+		.authorizeHttpRequests(authz->authz
+			.dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.INCLUDE, DispatcherType.ERROR, DispatcherType.REQUEST).permitAll()
+			.requestMatchers("/", "/loginPage","/logout", "/noticeCheckPage", "/registerPage", "/menu/all").permitAll()
+			// login은 post요청으로 데이터 전송할 때 사용, 모든 사용자 허용 
+			.requestMatchers(HttpMethod.POST,"/login", "/register").permitAll()
+			.requestMatchers(HttpMethod.PUT, "/menu/count/**").permitAll() // 비로그인 상태에서도 조회수 +1
+	
+			.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
+			// noticeAdd, noticeModifyPage는 admin, manager 일 때만 접근 가능
+			.requestMatchers("/noticeAddPage","/noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
+			.requestMatchers(HttpMethod.POST,"/menu/add").hasAnyAuthority("ADMIN","MANAGER")
+			.requestMatchers(HttpMethod.POST,"/menu/update").hasAnyAuthority("ADMIN","MANAGER")
+			.requestMatchers(HttpMethod.DELETE,"/menu/delete").hasAnyAuthority("ADMIN","MANAGER")
+			//위에 적힌 거 외에는 로그인한 사용자만 접근가능 
+			.anyRequest().authenticated()
 		)
 		// AWS 설정
-		.authorizeHttpRequests(request->request.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll())
+		
 		
 		// 로그인 설정
 		.formLogin(
